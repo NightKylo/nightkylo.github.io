@@ -212,3 +212,11 @@ footer.py-5{
   -ms-user-select: none;
   user-select: none;
 }
+
+#copy_button{
+  height: 49px;
+  cursor: pointer;
+  float: right;
+  margin-top: -37px;
+  margin-right: -55px;
+}
