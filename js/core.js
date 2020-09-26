@@ -2,6 +2,7 @@
     core.js
     handling of functions, used often
 */ 
+
 help_url = 'https://nightkylo.github.io/help'
 
 document.getElementById('copy_button').addEventListener('click', function(){
