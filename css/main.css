@@ -220,3 +220,9 @@ footer.py-5{
   margin-top: -37px;
   margin-right: -55px;
 }
+
+#help_button{
+  float: left;
+  margin-top: -19px !important;
+  cursor: pointer;
+}

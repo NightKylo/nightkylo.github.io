@@ -2,6 +2,7 @@
     core.js
     handling of functions, used often
 */ 
+help_url = 'https://nightkylo.github.io/help.html'
 
 document.getElementById('copy_button').addEventListener('click', function(){
     output = document.getElementById('output').innerHTML;
@@ -29,6 +30,10 @@ document.getElementById('copy_button').addEventListener('click', function(){
     }
 
     copyToClipboard(output);
+});
+
+document.getElementById('help_button').addEventListener('click', function(){
+    window.location.href = help_url;
 });
 
 function copyToClipboard(str){

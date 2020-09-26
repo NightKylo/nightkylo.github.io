@@ -4,6 +4,7 @@
 */
 
 output_field = document.getElementById('output');
+document.onkeydown = handle_keypress;
 
 window.addEventListener('load', function(){
     console.log('Window loaded');
@@ -12,9 +13,13 @@ window.addEventListener('load', function(){
     if(window.innerWidth <= 425){
         document.getElementById('copy_button').className = 'unselectable invisible';
     }
-});
 
-document.onkeydown = handle_keypress;
+    if(window.innerWidth >= 1850){
+        console.log('updated');
+        document.getElementById('help_button').style.float = 'none';
+        document.getElementById('help_button').style.setProperty('margin-left', '-1500px', 'important');
+    }
+});
 
 document.getElementById('button0').addEventListener('click', function(){
     enter('0');
