@@ -3,7 +3,7 @@
     Default calculator handling
 */
 
-output_field = document.getElementById('output');
+const output_field = document.getElementById('output');
 document.onkeydown = handle_keypress;
 
 window.addEventListener('load', function(){
@@ -414,8 +414,12 @@ function handle_keypress(key){
 
     if(key.code == 'KeyV'){
         output = output_field.innerHTML;
-        getClipboardContent();
+        pasteClipboard();
     }
+
+    /*if(key.code == 'F11'){
+        document.getElementsByTagName('main')[0].style.marginBottom = '13.3rem';
+    }*/
 
     for(i = 0; i < key.code.length; i++){
         for(a = 0; a < nums.length; a++){

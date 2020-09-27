@@ -10,7 +10,8 @@ const colors = [
     'linear-gradient(0deg, #F8A255 0%, #E14B56 100%)',
     'linear-gradient(0deg, #28F7D1 0%, #32ADF0 100%)',
     'linear-gradient(0deg, #00CC7E 0%, #0DFCE4 100%)',
-    'linear-gradient(0deg, #222559 0%, #F2293A 100%)'
+    'linear-gradient(0deg, #222559 0%, #F2293A 100%)',
+    'linear-gradient(0deg, #000000 0%, #FF0000 100%)'
 ]
 
 window.addEventListener('load', function(){
@@ -80,7 +81,7 @@ function copyToClipboard(str){
     navigator.clipboard.writeText(str)
 }
 
-function getClipboardContent(){
+function pasteClipboard(){
     navigator.clipboard.readText().then(function(text){
         write(text);
     });

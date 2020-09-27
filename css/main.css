@@ -196,6 +196,10 @@ main.masthead .bg-circle-4 {
   .calculator{
     margin-bottom: 50px;
   }
+
+  main.masthead{
+    padding-bottom: 13.3rem !important;
+  }
 }
 
 footer.py-5{
