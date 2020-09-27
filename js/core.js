@@ -3,20 +3,44 @@
     handling of functions, used often
 */ 
 
-help_url = 'https://nightkylo.github.io/help'
+const help_url = 'https://nightkylo.github.io/help';
+const colors = [
+    'linear-gradient(0deg, #004BFA 0%, #00123B 100%',
+    'linear-gradient(0deg, #8000FF 0%, #200040 100%',
+    'linear-gradient(0deg, #F8A255 0%, #E14B56 100%)',
+    'linear-gradient(0deg, #28F7D1 0%, #32ADF0 100%)',
+    'linear-gradient(0deg, #00CC7E 0%, #0DFCE4 100%)',
+    'linear-gradient(0deg, #222559 0%, #F2293A 100%'
+]
 
 window.addEventListener('load', function(){
+    var paint_objects = [];
     if(!checkcookie('background')){
         setcookie('background', 'default', 365);
     }
     else{
         var background = readcookie('background');
         if(background != 'default'){
-            if(background == 'cyan'){
-                document.getElementsByTagName('main')[0].style.background = 'linear-gradient(0deg, #E0D4D6 0%, ##312D2D 25%, #DE0A14 50%, #99AB99 75%, #D4EDDA 100%)';
+            paint_objects.push(document.getElementsByTagName('main')[0]);
+            for(i = 0; i < document.getElementsByClassName('bg-circle').length; i++){
+                paint_objects.push(document.getElementsByClassName('bg-circle')[i]);
+            }
+            for(i = 0; i < paint_objects.length; i++){
+                paint_objects[i].style.background = background;
             }
         }
     }
+    
+    /* This code is only relevant for local testing
+
+    background = colors[5];
+    paint_objects.push(document.getElementsByTagName('main')[0]);
+    for(i = 0; i < document.getElementsByClassName('bg-circle').length; i++){
+        paint_objects.push(document.getElementsByClassName('bg-circle')[i]);
+    }
+    for(i = 0; i < paint_objects.length; i++){
+        paint_objects[i].style.background = background;
+    }*/
 });
 
 document.getElementById('copy_button').addEventListener('click', function(){
