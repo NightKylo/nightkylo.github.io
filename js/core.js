@@ -7,7 +7,7 @@ help_url = 'https://nightkylo.github.io/help'
 
 window.addEventListener('load', function(){
     if(!checkcookie('background')){
-        setcookie('backgroung', 'default');
+        setcookie('backgroung', 'default', 365);
     }
     else{
         var background = readcookie('background');
@@ -89,7 +89,7 @@ function readcookie(name){
 }
 
 function checkcookie(name){
-    var cookie = getCookie(name);
+    var cookie = readcookie(name);
     if (cookie != ""){
         return true;
     }else {
