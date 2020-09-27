@@ -192,6 +192,17 @@ main.masthead .bg-circle-4 {
   }
 }
 
+@media(max-width: 376px){
+  footer.py-5{
+    position: absolute;
+    left: -9999999px;
+  }
+
+  main.masthead{
+    padding-bottom: 9.65rem;
+  }
+}
+
 @media(min-height: 1079px){
   .calculator{
     margin-bottom: 50px;

@@ -1,6 +1,6 @@
 /*
     core.js
-    handling of functions, used often
+    handling of functions, used often, and/or are very important
 */ 
 
 const help_url = 'https://nightkylo.github.io/help';
