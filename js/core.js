@@ -16,17 +16,18 @@ const colors = [
 window.addEventListener('load', function(){
     var paint_objects = [];
     if(!checkcookie('background')){
-        setcookie('background', 'default', 365);
+        setcookie('background', '-1', 365);
     }
     else{
-        var background = readhexcookie('background');
-        if(background != 'default'){
+        var background = readcookie('background');
+        console.log(background);
+        if(background != '-1'){
             paint_objects.push(document.getElementsByTagName('main')[0]);
             for(i = 0; i < document.getElementsByClassName('bg-circle').length; i++){
                 paint_objects.push(document.getElementsByClassName('bg-circle')[i]);
             }
             for(i = 0; i < paint_objects.length; i++){
-                paint_objects[i].style.background = background;
+                paint_objects[i].style.background = colors[background];
             }
         }
     }
@@ -104,22 +105,6 @@ function readcookie(name){
     var cookiename = name + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
-    for(var i = 0; i < ca.length; i++){
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(cookiename) == 0){
-            return c.substring(cookiename.length, c.length);
-        }
-    }
-    return "";
-}
-
-function readhexcookie(name){
-    var cookiename = name + "=";
-    var cookie = document.cookie;
-    var ca = cookie.split(';');
     for(var i = 0; i < ca.length; i++){
         var c = ca[i];
         while (c.charAt(0) == ' ') {
