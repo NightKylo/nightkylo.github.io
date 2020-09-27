@@ -392,7 +392,13 @@ function handle_keypress(key){
 
     if(key.code == 'Backspace' || key.code == 'Delete'){
         rewrite('');
-        document.getElementById('copy_button').style.marginTop = "-37px";
+        if(window.innerWidth > 425){
+            document.getElementById('copy_button').style.marginTop = "-37px";
+            document.getElementById('buttonc').style.marginTop = "-35px";
+        }
+        else{
+            document.getElementById('buttonc').style.marginTop = "-35px";
+        }
         return;
     }
 
