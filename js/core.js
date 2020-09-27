@@ -5,12 +5,12 @@
 
 const help_url = 'https://nightkylo.github.io/help';
 const colors = [
-    'linear-gradient(0deg, #004BFA 0%, #00123B 100%',
-    'linear-gradient(0deg, #8000FF 0%, #200040 100%',
+    'linear-gradient(0deg, #004BFA 0%, #00123B 100%)',
+    'linear-gradient(0deg, #8000FF 0%, #200040 100%)',
     'linear-gradient(0deg, #F8A255 0%, #E14B56 100%)',
     'linear-gradient(0deg, #28F7D1 0%, #32ADF0 100%)',
     'linear-gradient(0deg, #00CC7E 0%, #0DFCE4 100%)',
-    'linear-gradient(0deg, #222559 0%, #F2293A 100%'
+    'linear-gradient(0deg, #222559 0%, #F2293A 100%)'
 ]
 
 window.addEventListener('load', function(){
@@ -19,7 +19,7 @@ window.addEventListener('load', function(){
         setcookie('background', 'default', 365);
     }
     else{
-        var background = readcookie('background');
+        var background = readhexcookie('background');
         if(background != 'default'){
             paint_objects.push(document.getElementsByTagName('main')[0]);
             for(i = 0; i < document.getElementsByClassName('bg-circle').length; i++){
@@ -104,6 +104,22 @@ function readcookie(name){
     var cookiename = name + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++){
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cookiename) == 0){
+            return c.substring(cookiename.length, c.length);
+        }
+    }
+    return "";
+}
+
+function readhexcookie(name){
+    var cookiename = name + "=";
+    var cookie = document.cookie;
+    var ca = cookie.split(';');
     for(var i = 0; i < ca.length; i++){
         var c = ca[i];
         while (c.charAt(0) == ' ') {
