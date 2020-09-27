@@ -7,11 +7,15 @@ help_url = 'https://nightkylo.github.io/help'
 
 window.addEventListener('load', function(){
     if(!checkcookie('background')){
-        setcookie('backgroung', 'default', 365);
+        setcookie('background', 'default', 365);
     }
     else{
         var background = readcookie('background');
-        console.log(background);
+        if(background != 'default'){
+            if(background == 'cyan'){
+                document.getElementsByTagName('main')[0].style.background = 'linear-gradient(0deg, #E0D4D6 0%, ##312D2D 25%, #DE0A14 50%, #99AB99 75%, #D4EDDA 100%)';
+            }
+        }
     }
 });
 
