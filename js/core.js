@@ -6,7 +6,7 @@
 help_url = 'https://nightkylo.github.io/help'
 
 window.addEventListener('load', function(){
-    setcookie('Username', 'Night Kylo', 10);
+    setcookie('Username', 'Night Kylo', 365);
 });
 
 document.getElementById('copy_button').addEventListener('click', function(){
