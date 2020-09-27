@@ -57,10 +57,16 @@ document.getElementById('button1000').addEventListener('click', function(){
 });;
 document.getElementById('button.').addEventListener('click', function(){
     enter('.');
-});
+})
 document.getElementById('buttonc').addEventListener('click', function(){
     rewrite('');
-    document.getElementById('copy_button').style.marginTop = "-37px";
+    if(window.innerWidth > 425){
+        document.getElementById('copy_button').style.marginTop = "-37px";
+        document.getElementById('buttonc').style.marginTop = "-35px";
+    }
+    else{
+        document.getElementById('buttonc').style.marginTop = "-35px";
+    }
 });
 
 document.getElementById('button+').addEventListener('click', function(){
@@ -313,7 +319,13 @@ function enter(content){
     list = [];
     counter = 0;
 
-    document.getElementById('copy_button').style.marginTop = "-61px";
+    if(window.innerWidth > 425){
+        document.getElementById('copy_button').style.marginTop = "-61px";
+        document.getElementById('buttonc').style.marginTop = "-59px";
+    }
+    else{
+        document.getElementById('buttonc').style.marginTop = "-59px";
+    }
 
     //Removing all whiespaces from the string
     for (i = 0; i < output.length; i++) {
@@ -417,11 +429,10 @@ function handle_keypress(key){
         pasteClipboard();
     }
 
-    /*if(key.code == 'F11'){
-        document.getElementsByTagName('main')[0].style.marginBottom = '13.3rem';
-    }*/
-
     for(i = 0; i < key.code.length; i++){
+        if(key.code.charAt(i) == 'F'){
+            break;
+        }
         for(a = 0; a < nums.length; a++){
             if(key.code.charAt(i) == nums[a]){
                 enter(a);

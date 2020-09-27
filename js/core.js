@@ -88,7 +88,13 @@ function pasteClipboard(){
 
     function write(text){
         if(text != ''){
-            document.getElementById('copy_button').style.marginTop = "-61px";
+            if(window.innerWidth > 425){
+                document.getElementById('copy_button').style.marginTop = "-61px";
+                document.getElementById('buttonc').style.marginTop = "-59px";
+            }
+            else{
+                document.getElementById('buttonc').style.marginTop = "-59px";
+            }
             document.getElementById('output').innerHTML += text;
         }
     }

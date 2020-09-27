@@ -230,3 +230,11 @@ footer.py-5{
   margin-top: -19px !important;
   cursor: pointer;
 }
+
+.mobileclear{
+  float: right;
+  width: 45px;
+  margin-top: -35px;
+  margin-right: 5px;
+  cursor: pointer;
+}
