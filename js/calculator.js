@@ -412,6 +412,11 @@ function handle_keypress(key){
         copyToClipboard(output);
     }
 
+    if(key.code == 'KeyV'){
+        output = output_field.innerHTML;
+        getClipboardContent();
+    }
+
     for(i = 0; i < key.code.length; i++){
         for(a = 0; a < nums.length; a++){
             if(key.code.charAt(i) == nums[a]){

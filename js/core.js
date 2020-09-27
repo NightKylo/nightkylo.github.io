@@ -5,6 +5,10 @@
 
 help_url = 'https://nightkylo.github.io/help'
 
+window.addEventListener('load', function(){
+    setcookie('Username', 'Night Kylo', 10);
+});
+
 document.getElementById('copy_button').addEventListener('click', function(){
     output = document.getElementById('output').innerHTML;
     list = [];
@@ -38,14 +42,51 @@ document.getElementById('help_button').addEventListener('click', function(){
 });
 
 function copyToClipboard(str){
-    //console.log('Copyed: ' + str + ' to the clipboard');
-    element = document.createElement('textarea');
-    element.value = str;
-    element.setAttribute('readonly', '');
-    element.style.position = 'absolute';
-    element.style.left = '-9999px';
-    document.body.appendChild(element);
-    element.select();
-    document.execCommand('copy');
-    document.body.removeChild(element);
+    navigator.clipboard.writeText(str)
+}
+
+function getClipboardContent(){
+    navigator.clipboard.readText().then(function(text){
+        write(text);
+    });
+
+    function write(text){
+        if(text != ''){
+            document.getElementById('copy_button').style.marginTop = "-61px";
+            document.getElementById('output').innerHTML += text;
+        }
+    }
+}
+
+function setcookie(name, content, expiredate){
+    var d = new Date();
+    d.setTime(d.getTime() + (expiredate * 24 * 60 * 60 * 1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = name + "=" + content + ";" + expires + ";path=/";
+    console.log('Created cookie ' + name + ' with the value ' + content);
+}
+
+function readcookie(name){
+    var cookiename = name + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++){
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cookiename) == 0){
+            return c.substring(cookiename.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkcookie(name){
+    var cookie = getCookie(name);
+    if (cookie != ""){
+        return true;
+    }else {
+        return false;
+    }
 }
