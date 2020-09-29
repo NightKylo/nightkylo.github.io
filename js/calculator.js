@@ -1,10 +1,10 @@
 /*
     calculator.js
     Default calculator handling
+    Copyright © 2020 Marius Kraus (NightKylo)
 */
 
 const output_field = document.getElementById('output');
-document.onkeydown = handle_keypress;
 
 window.addEventListener('load', function(){
     console.log('Window loaded');
@@ -15,10 +15,10 @@ window.addEventListener('load', function(){
     }
 
     if(window.innerWidth >= 1850){
-        console.log('updated');
         document.getElementById('help_button').style.float = 'none';
         document.getElementById('help_button').style.setProperty('margin-left', '-1500px', 'important');
     }
+
 });
 
 document.getElementById('button0').addEventListener('click', function(){
@@ -84,6 +84,29 @@ document.getElementById('button/').addEventListener('click', function(){
 document.getElementById('button=').addEventListener('click', function(){
     output = output_field.innerHTML;
     
+    if(output == ''){
+        return;
+    }
+
+    if(output == '30 + 04 + 2006'){
+        if(index == colors.length - 1){
+            index = -1;
+            rewrite('');
+            if(window.innerWidth > 425){
+                document.getElementById('copy_button').style.marginTop = "-37px";
+                document.getElementById('buttonc').style.marginTop = "-35px";
+            }
+            else{
+                document.getElementById('buttonc').style.marginTop = "-35px";
+            }
+        }
+        else{
+            index++;
+        }
+        draw_background(index, true, true);
+        return;
+    }
+
     for(i = 0; i < output.length; i++){
         if(output.charAt(i) == '='){
             return;
@@ -353,112 +376,6 @@ function enter(content){
         }
     }
     write(content);
-}
-
-function handle_keypress(key){
-    nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    //console.log(key.code);
-
-    if(key.code == 'NumpadEnter' || key.code == 'Enter'){
-        output = output_field.innerHTML;
-    
-        for(i = 0; i < output.length; i++){
-            if(output.charAt(i) == '='){
-                return;
-            }
-        }
-        counter = 0;
-        calculation = output_field.innerHTML;
-    
-        list = [];
-    
-    
-        for (i = 0; i < calculation.length; i++) {
-            if(calculation.charAt(i) != ' '){
-                list[counter] = calculation.charAt(i);
-                counter++;
-            }
-        }
-    
-        for (i = 0; i < calculation.length; i++) {
-            if(calculation.charAt(i) == '/' || calculation.charAt(i) == '<' || calculation.charAt(i) == '(' || calculation.charAt(i) == 's' || calculation.charAt(i) == '?'){
-                rewrite('You are offically the worst hacker visited this site ever! Train your skills, when you want to hack websites!');
-                return;
-            }
-        }
-    
-        calculate(list.join(''));
-    }
-
-    if(key.code == 'Backspace' || key.code == 'Delete'){
-        rewrite('');
-        if(window.innerWidth > 425){
-            document.getElementById('copy_button').style.marginTop = "-37px";
-            document.getElementById('buttonc').style.marginTop = "-35px";
-        }
-        else{
-            document.getElementById('buttonc').style.marginTop = "-35px";
-        }
-        return;
-    }
-
-    if(key.code == 'KeyC'){
-        output = output_field.innerHTML;
-        list = [];
-
-        if(output.lengt == 0){
-            return;
-        }
-    
-        for(i = 0; i < output.length; i++){
-            if(output.charAt(i) != ' '){
-                list.push(output.charAt(i));
-            }
-        }
-    
-        output = list.join('');
-    
-        for(i = 0; i < output.length; i++){
-            if(output.charAt(i) == '='){
-                result = output.split('=', 2)[1];
-                //console.log(result);
-                copyToClipboard(result);
-                return;
-            }
-        }
-
-        copyToClipboard(output);
-    }
-
-    if(key.code == 'KeyV'){
-        output = output_field.innerHTML;
-        pasteClipboard();
-    }
-
-    for(i = 0; i < key.code.length; i++){
-        if(key.code.charAt(i) == 'F'){
-            break;
-        }
-        for(a = 0; a < nums.length; a++){
-            if(key.code.charAt(i) == nums[a]){
-                enter(a);
-                return;
-            }
-        }
-    }
-
-    if(key.code == 'NumpadAdd'){
-        enter(' + ');
-    }
-    else if(key.code == 'NumpadSubtract'){
-        enter(' - ');
-    }
-    else if(key.code == 'NumpadMultiply'){
-        enter(' × ');
-    }
-    else if(key.code == 'NumpadDivide'){
-        enter(' ÷ ');
-    }
 }
 
 function write(content){

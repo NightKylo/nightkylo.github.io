@@ -249,3 +249,27 @@ footer.py-5{
   margin-right: 5px;
   cursor: pointer;
 }
+
+.help_points_list{
+  list-style: none;
+}
+
+li.help_li{
+  width: 500px;
+  margin: 2.5rem auto 2.5rem auto;
+}
+
+.entry_img{
+  width: 550px;
+  height: 120px;
+  margin-left: -26px;
+}
+
+.help_text{
+  padding: 5px;
+  margin: 0.25rem 0 0.25rem 0;
+}
+
+.border_div{
+  margin-top: -110px;
+}
