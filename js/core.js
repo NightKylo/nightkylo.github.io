@@ -53,7 +53,7 @@ if(document.title == 'Calculator++ | Home'){
         output = document.getElementById('output').innerHTML;
         list = [];
 
-        if(output.lengt == 0){
+        if(output.length == 0){
             return;
         }
 
@@ -86,7 +86,7 @@ function copyToClipboard(){
     output = output_field.innerHTML;
     list = [];
 
-    if(output.lengt == 0){
+    if(output.length == 0){
         return;
     }
 
