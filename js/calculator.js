@@ -54,7 +54,7 @@ document.getElementById('button9').addEventListener('click', function(){
 });
 
 document.getElementById('button1000').addEventListener('click', function(){
-    enter('000');
+    write('000');
 });;
 document.getElementById('button.').addEventListener('click', function(){
     enter('.');
