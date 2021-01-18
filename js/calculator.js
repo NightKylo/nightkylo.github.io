@@ -1,6 +1,7 @@
 /*
     /js/calculator.js
     JavaScript calculator
+    Copyright © M. Kraus (NightKylo)
 */
 
 const output_field = document.getElementById('output');
