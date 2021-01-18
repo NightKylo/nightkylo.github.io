@@ -1,7 +1,7 @@
 /*
     core.js
     handling of functions, used often, and/or are very important
-    Copyright © 2020 Marius Kraus (NightKylo)
+    Copyright © 2020 M. Kraus (NightKylo)
 */ 
 
 document.onkeydown = key_check;
