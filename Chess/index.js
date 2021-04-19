@@ -7,12 +7,11 @@ const uidField = document.getElementsByName("uid")[0];
 
 // Removes the get parameters from the url
 function ReplaceGetParameters() {
-    const url = new URL(window.location.href);
 
-    if(!url.href.includes("?"))
+    if(!window.location.href.includes("?"))
         return;
 
-    history.replaceState({}, document.title, url.href.split("?")[0]);
+    history.replaceState({}, document.title, window.location.href.split("?")[0]);
 }
 
 // Sets the token
