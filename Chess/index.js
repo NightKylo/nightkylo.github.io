@@ -6,7 +6,7 @@ const tokenField = document.getElementsByName("token")[0];
 const uidField = document.getElementsByName("uid")[0];
 
 // Removes the get parameters from the url
-function ReplaceGetParameters(keys=[]) {
+function ReplaceGetParameters() {
     const url = new URL(window.location.href);
 
     if(!url.href.includes("?"))
@@ -18,7 +18,7 @@ function ReplaceGetParameters(keys=[]) {
 // Sets the token
 function SetToken() {
     var token = GetParameters(window.location.search.substr(1));
-    ReplaceGetParameters(["token"]);
+    ReplaceGetParameters();
     if(token != undefined)
         tokenField.value = token["token"];
 }
