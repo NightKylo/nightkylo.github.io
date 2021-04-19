@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: -webkit-gradient(linear, left top, left bottom, from(#19191f), to(#2ecc71)) fixed;
+}
+
+@media screen and (min-width: 950px){
+    .box{
+        width: 30% !important;
+    }
+    .box input[type = "text"]:focus, .box input[type = "password"]:focus{
+        width: 280px;
+    }
+}
+
+/*@media screen and (pointer:none), (pointer:coarse) {
+    .box{
+        width: 40% !important;
+        height: 50% !important;
+        border-radius: 25px !important; 
+    }
+    .box h1{
+        font-size: 75px !important;
+        margin-top: 5% !important;
+        margin-bottom: 10% !important;
+    }
+    .box input{
+        width: 80% !important;
+        height: 8% !important;
+        border-radius: 50px !important;
+        font-size: 30px !important;
+        margin-top: 10% !important;
+    }
+    .box button{
+        margin-top: 10% !important;
+        width: 35% !important;
+        height: 12% !important;
+        border-radius: 50px !important;
+        font-size: 30px !important;
+        padding-bottom: 10%;
+    }
+}*/
+
+.box{
+    border-radius: 10px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #191919;
+    text-align: center;
+}
+
+.box input{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3496db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box input:focus{
+    border-color: #2ecc71;
+}
+
+.loginButton, .authButton{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid  #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.loginButton:hover, .authButton:hover{
+    background: #2ecc71;
+}
+
+.box h1, h2, h3, p, img{
+    color: white;
+}
+
+.hidden{
+    display: none;
+}
+
+.icon{
+    float: left;
+    width: 20%;
+    height: 20%;
+    margin-bottom: -20px;
+}
+
+.imgContainer{
+    display: inline-block;
+    text-align: center;
+    width: 80%;
+}
+
+.authUser{
+    margin-top: 2%;
+    float: right;
+    overflow: hidden;
+    width: 70%;
+    height: 5%;
+}
