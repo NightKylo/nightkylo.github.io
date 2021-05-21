@@ -13,6 +13,5 @@ function loadFile () {
                 document.getElementsByClassName("img")[i].src = objectUrl;
             URL.revokeObjectURL(objectUrl);
         };
-        img.src = objectUrl;
     }
 }
