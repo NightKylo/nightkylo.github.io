@@ -57,11 +57,11 @@ input[type="file"] {
 }
 
 .img{
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
     overflow: hidden;
-    display: none;
     width: 128px;
     height: 128px;
 }
