@@ -1,8 +1,81 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="index.css">
         <link rel="icon" href="default.png">
+        <style>
+            body{
+                background: #23272A;
+                color: #ffffff;
+            }
+
+
+            .wrapper, .content{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+            .container{
+                background: #2C2F33;
+                width: 600px;
+                text-align: center;
+                height: 400px;
+                border-radius: 10px;
+            }
+
+            h1{
+                padding-top: 20px;
+            }
+
+            .box{
+                width: 600px;
+                position: relative;
+                display: flex;
+                flex-flow: row wrap;
+                align-items: flex-start;
+                justify-content: space-evenly;
+            }
+
+            input[type="file"] {
+                display: none;
+            }
+
+            .uploadButton{
+                background: #7289DA;
+                padding: 10px;
+                border-radius: 15px;
+            }
+
+            .imgUpload{
+                margin-top: 25px;
+            }
+
+            .content{
+                top: 80%;
+            }
+
+            .img{
+                border-radius: 50%;
+                margin: 30px 20px auto 10px;
+            }
+
+            .img1{
+                width: 128px;
+                height: 128px;
+            }
+
+            .img2{
+                width: 80px;
+                height: 80px;
+            }
+
+            .img3{
+                width: 32px;
+                height: 32px;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper">
@@ -24,6 +97,25 @@
                 </div>
             </div>
         </div>
-        <script src="index.js"></script>
+        <script>
+            document.getElementById("upload").onchange = loadFile;
+
+            function loadFile() {
+                var file, img;
+                if(file = this.files[0]) {
+                    img = new Image();
+                    var objectUrl = URL.createObjectURL(file);
+                    img.onload = function () {
+                        console.log(this.width + " " + this.height);
+                        if(this.width != this.height)
+                            alert("The image is not in a squared shape. You may experience weird behavoiur. Cut the image to a square to get the most realistic view.");
+                        for(i = 0; i < document.getElementsByClassName("img").length; i++)
+                            document.getElementsByClassName("img")[i].src = objectUrl;
+                        URL.revokeObjectURL(objectUrl);
+                    };
+                    img.src = objectUrl;
+                }
+            }
+        </script>
     </body>
 </html>
