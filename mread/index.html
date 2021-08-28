@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="css/scrollbar.css">
+        <link rel="icon" href="icons/blue-red-rounded.ico">
+        <title>Test</title>
+    </head>
+
+    <body>
+
+        <nav>
+
+            <div class="logo">
+                <a href="">Home</a>
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#Recent">Recent</a>
+                </li>
+
+                <li>
+                    <a href="#Liked">Liked</a>
+                </li>
+
+                <li>
+                    <a href="#Settings">Settings</a>
+                </li>
+
+                <li>
+                    <a href="#About">About</a>
+                </li>
+
+            </ul>
+
+            <div class="icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+
+        </nav>
+
+        <main class="container">
+            
+            <ul class="entry-wrapper">
+
+                <div class="entry">
+                    <div>
+                        <a class="title">Recent</a>
+                        <span class="page-number">3/4</span>
+                    </div>
+                        
+                    <ul class="img-list">
+                        <li>
+                            <img class="cover" src="https://game2gether.de/wp-content/uploads/2021/05/Jujutsu-Kaisen-Band-1-Cover.png">
+                        </li>
+
+                        <li>
+                            <img class="cover" src="https://legendofthegoldenwind.files.wordpress.com/2019/01/yellowcover.jpg?w=1400">
+                        </li>
+
+                        <li>
+                            <img class="cover" src="https://pbs.twimg.com/media/Eh5ppADXgAIV0pK.jpg">
+                        </li>
+
+                        <li>
+                            <img class="cover" src="https://kaze-online.de/media/b9/12/f1/1625102975/b8e67b3657d24f46ba684aa33e66c58a.png">
+                        </li>
+
+                        <li>
+                            <img class="cover" src="https://images-na.ssl-images-amazon.com/images/I/81iDNjn-r3L.jpg">
+                        </li>
+
+                        <li>
+                            <img class="cover" src="https://www.carlsen.de/sites/default/files/produkt/cover/attack-on-titan-32.jpg">
+                        </li>
+                    
+                        <li>
+                            <img class="cover" src="https://upload.wikimedia.org/wikipedia/en/b/ba/The_Quintessential_Quintuplets_volume_1_cover.jpg">
+                        </li>
+
+                        <li>
+                            <img class="cover" src="https://m.media-amazon.com/images/I/51DhLOAk3EL.jpg">
+                        </li>
+                    </ul>
+
+                    <img class="next-icon" src="icons/next.svg">
+                    <img class="last-icon" src="icons/next.svg">
+
+                </div>
+
+                <div class="entry">
+                    
+                    <div>
+                        <a class="title">Liked</a>
+                        <span class="page-number">3/4</span>
+                    </div>
+
+                    <ul class="img-list">
+                        <li>
+                            <img src="https://game2gether.de/wp-content/uploads/2021/05/Jujutsu-Kaisen-Band-1-Cover.png" class="cover">
+                        </li>
+
+                        <li>
+                            <img src="https://legendofthegoldenwind.files.wordpress.com/2019/01/yellowcover.jpg?w=1400" class="cover">
+                        </li>
+
+                        <li>
+                            <img src="https://pbs.twimg.com/media/Eh5ppADXgAIV0pK.jpg" class="cover">
+                        </li>
+                        
+                        <li>
+                            <img src="https://kaze-online.de/media/b9/12/f1/1625102975/b8e67b3657d24f46ba684aa33e66c58a.png" class="cover">
+                        </li>
+                        
+                        <li>
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81iDNjn-r3L.jpg" class="cover">
+                        </li>
+
+                        <li>
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81iDNjn-r3L.jpg" class="cover">
+                        </li>
+
+                        <li>
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81iDNjn-r3L.jpg" class="cover">
+                        </li>
+
+                        <li>
+                            <img src="https://images-na.ssl-images-amazon.com/images/I/81iDNjn-r3L.jpg" class="cover">
+                        </li>
+                    </ul>
+
+                    <img class="next-icon" src="icons/next.svg">
+                    <img class="last-icon" src="icons/next.svg">
+                </div>
+
+            </ul>
+
+        </main>
+
+        <script src="app.js"></script>
+        <script>    
+            window.onorientationchange = function() { 
+                var orientation = window.orientation; 
+                switch(orientation) { 
+                    case 0:
+                    case 90:
+                    case -90: window.location.reload(true); 
+                    break; 
+                }
+            };
+        </script>
+
+    </body>
+
+</html>
