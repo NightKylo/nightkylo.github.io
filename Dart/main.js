@@ -140,7 +140,7 @@ function calculate(numScore, score) {
         player.setAttribute("average", (parseFloat(player.getAttribute("average")) * round + parseInt(player.getAttribute("currentroundscore")) + numScore) / (round + 1));
         player.setAttribute("round", round + 1);
         player.setAttribute("currentroundscore", parseInt(player.getAttribute("currentroundscore")) + numScore);
-        player.setAttribute("score", parseInt(player.getAttribute("score")) - parseInt(player.getAttribute("currentroundscore")) - numScore);
+        player.setAttribute("score", parseInt(player.getAttribute("score")) - parseInt(player.getAttribute("currentroundscore"));
         next(player);
     }
     else {
