@@ -223,8 +223,10 @@ function select(node) {
 function clickPlayer(player) {
     if(editMode)
         player.remove();
-    if(document.getElementsByClassName("playerShowList")[0].children.length - 1 === 0)
+    if(document.getElementsByClassName("playerShowList")[0].children.length - 1 === 0) {
+        editMode = false;
         document.getElementsByClassName("removePlayer")[0].setAttribute("style", "");
+    }
 }
 
 function addPlayer(username) {
@@ -298,11 +300,8 @@ document.getElementsByClassName("addPlayer")[0].addEventListener("click", functi
 });
 
 document.getElementsByClassName("removePlayer")[0].addEventListener("click", function() {
-    if(document.getElementsByClassName("playerShowList")[0].children.length === 0) {
-        document.getElementsByClassName("removePlayer")[0].setAttribute("style", "");
-        editMode = false;
+    if(document.getElementsByClassName("playerShowList")[0].children.length === 0)
         return;
-    }
     editMode = !editMode;
     if(editMode)
         document.getElementsByClassName("removePlayer")[0].setAttribute("style", "background-color: #502228;"); //#502228
