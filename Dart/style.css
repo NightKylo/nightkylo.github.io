@@ -1,0 +1,163 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: #1B1B1B;
+    color: #AEAEB4;
+    font-family: 'Roboto', sans-serif;
+    width: 95vw;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+li:first-child {
+    margin-top: 0vh;
+}
+
+main {
+    width: 90%;
+}
+
+.button {
+    font-size: 3vh;
+    padding: 10px;
+    background-color: #4D4D4D;
+    border-radius: 10px;
+}
+
+.playerEditRepresentation {
+    margin-top: 10vh;
+}
+
+.prompt {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: #1B1B1B;
+    width: 100vw;
+    height: 100vh;
+}
+
+.prompt h1 {
+    font-size: 4vh;
+}
+
+.submit, .cancel {
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+.prompt div:first-child {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    background-color:#808080;
+    color: #2D2D2D;
+    border-radius: 10px;
+}
+
+.buttonList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.buttonList a {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.start {
+    bottom: 5%;
+    right: 2vw;
+    position: absolute;
+    display: block;
+    float: right;
+}
+
+
+.playersTurnList {
+    width: 90vw;
+    display: inline-flex;
+    overflow-x: scroll;
+}
+
+.playersTurnList::-webkit-scrollbar {
+    display: none;
+}
+
+.playerModel {
+    white-space: nowrap;
+    font-size: 3vh;
+    background-color: #616161;
+    padding: 1vh;
+    border-radius: 20px;
+    margin-right: 2vw;
+}
+
+.playerName {
+    margin-right: 3vw;
+}
+
+table {
+    margin-top: 5vh;
+}
+
+td > div {
+    width: 20vw;
+    height: 13vw;
+    font-size: 3vh;
+    border: 2px solid #AEAEB4;
+    text-align: center;
+    padding-top: 25%;
+    border-radius: 10px;
+}
+
+.inputButtons {
+    display: flex;
+    justify-content: c;
+}
+
+.display {
+    position: absolute;
+    bottom: 8%;
+    left: 6%;
+    font-size: 2.5vh;
+}
