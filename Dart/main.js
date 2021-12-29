@@ -20,7 +20,6 @@ function start() {
     
     let x2, x3;
     document.getElementsByTagName("main")[0].setAttribute("style", "display: none;");
-    console.log(document.getElementsByClassName("playerShowList")[0].children);
     for(i = 0; i < document.getElementsByClassName("playerShowList")[0].children.length; i++) {
         let name = document.getElementsByClassName("playerShowList")[0].children[i].children[0].innerHTML;
         document.getElementsByClassName("playersTurnList")[0].insertAdjacentHTML("beforeend", 
@@ -30,16 +29,17 @@ function start() {
     
     
     document.getElementsByTagName("main")[1].setAttribute("style", "display: flex;");
+    console.log(document.querySelectorAll("td > div"));
     for(i = 0; i < document.querySelectorAll("td > div").length; i++) {
         var div = document.querySelectorAll("td > div")[i];
         
-        if(i < document.querySelectorAll("td > div").length - 3)
+        if(i < document.querySelectorAll("td > div").length - 4)
             div.addEventListener("click", function(event) {
                 if(!isSelected(event.target))   
                     deSelect(false);
                 select(event.target);
             });
-        else if(i !== document.querySelectorAll("td > div").length - 1) {
+        else if(i < document.querySelectorAll("td > div").length - 2) {
             if(x2 === undefined)
                 x2 = document.querySelectorAll("td > div")[i];
             else
@@ -59,36 +59,10 @@ function start() {
     }
 
     document.getElementsByClassName("save")[0].addEventListener("click", function() {
-        let score = '0';
-        
-        for(i = 0; i < document.getElementsByTagName("tbody")[0].children.length - 1; i++) {
-            let tr = document.getElementsByTagName("tbody")[0].children[i];
-            
-            for(j = 0; j < tr.children.length; j++) {
-                if(i === document.getElementsByTagName("tbody")[0].children.length - 2 && j === 2)
-                    break;
-                if(tr.children[j].children[0] === undefined)
-                    continue;
-                if(isSelected(tr.children[j].children[0])) {
-                    score = tr.children[j].children[0].innerHTML;
-                    break;
-                }
-            }
-        }
-
-        if(isSelected(x2))
-            score = "D" + score;
-        else if(isSelected(x3))
-            score = "T" + score;
-
-        if(calcScore(score) > 60) {
-            customAlert("T25 is not possible");
-            return;
-        }
-
-        show(score);
-        deSelect();
+        lock(x2, x3);
     });
+    document.getElementsByClassName("reset")[0].addEventListener("click", resetRound);
+
 
     inGame = true;
     customChoice("Use additional confirm window, when locking?", function(use) {
@@ -140,7 +114,7 @@ function calculate(numScore, score) {
         player.setAttribute("average", (parseFloat(player.getAttribute("average")) * round + parseInt(player.getAttribute("currentroundscore")) + numScore) / (round + 1));
         player.setAttribute("round", round + 1);
         player.setAttribute("currentroundscore", parseInt(player.getAttribute("currentroundscore")) + numScore);
-        player.setAttribute("score", parseInt(player.getAttribute("score")) - parseInt(player.getAttribute("currentroundscore"));
+        player.setAttribute("score", parseInt(player.getAttribute("score")) - parseInt(player.getAttribute("currentroundscore")));
         next(player);
     }
     else {
@@ -293,6 +267,46 @@ function reset() {
     clone.setAttribute("style", "display: none;");
     document.getElementsByTagName("main")[0].setAttribute("style", "");
     inGame = false;
+}
+
+function lock(x2, x3) {
+    let score = '0';
+    
+    for(i = 0; i < document.getElementsByTagName("tbody")[0].children.length - 1; i++) {
+        let tr = document.getElementsByTagName("tbody")[0].children[i];
+        
+        for(j = 0; j < tr.children.length; j++) {
+            if(i === document.getElementsByTagName("tbody")[0].children.length - 2 && j === 2)
+                break;
+            if(tr.children[j].children[0] === undefined)
+                continue;
+            if(isSelected(tr.children[j].children[0])) {
+                score = tr.children[j].children[0].innerHTML;
+                break;
+            }
+        }
+    }
+
+    if(isSelected(x2))
+        score = "D" + score;
+    else if(isSelected(x3))
+        score = "T" + score;
+
+    if(calcScore(score) > 60) {
+        customAlert("T25 is not possible");
+        return;
+    }
+
+    show(score);
+    deSelect();
+}
+
+function resetRound() {
+    let player = document.getElementsByClassName("playerModel")[0];
+    player.setAttribute("currentroundscore", "0");
+    player.setAttribute("throws", "0");
+    document.getElementsByClassName("display")[0].innerHTML = "";
+    document.getElementsByClassName("scoreRepresentation")[0].innerHTML = player.getAttribute("score");
 }
 
 
