@@ -20,6 +20,7 @@ function start() {
     
     let x2, x3;
     document.getElementsByTagName("main")[0].setAttribute("style", "display: none;");
+    console.log(document.getElementsByClassName("playerShowList")[0].children);
     for(i = 0; i < document.getElementsByClassName("playerShowList")[0].children.length; i++) {
         let name = document.getElementsByClassName("playerShowList")[0].children[i].children[0].innerHTML;
         document.getElementsByClassName("playersTurnList")[0].insertAdjacentHTML("beforeend", 
