@@ -172,13 +172,13 @@ function next(player) {
     //console.log("next player");
     let currentRoundScore = player.getAttribute("currentroundscore");
     player.setAttribute("currentroundscore", "0");
+    document.getElementsByClassName("scoreRepresentation")[0].innerHTML = `${player.getAttribute("score")}`;
 
     let parent = player.parentElement;
     player.remove();
     parent.insertAdjacentElement("beforeend", player);
     document.getElementsByClassName("display")[0].innerHTML = "";
     //console.log(player.getAttribute("score")); 
-    document.getElementsByClassName("scoreRepresentation")[0].innerHTML = `${player.getAttribute("score")}`;
     customAlert(`${currentRoundScore} made ${player.getAttribute("score")} to go`);
 }
 
