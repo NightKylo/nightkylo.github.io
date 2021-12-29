@@ -222,8 +222,8 @@ function select(node) {
 
 function clickPlayer(player) {
     if(editMode)
-        player.remove();
-    if(document.getElementsByClassName("playerShowList")[0].children.length - 1 === 0) {
+        player.parentElement.remove();
+    if(document.getElementsByClassName("playerShowList")[0].children.length === 0) {
         editMode = false;
         document.getElementsByClassName("removePlayer")[0].setAttribute("style", "");
     }
