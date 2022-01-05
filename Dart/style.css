@@ -152,7 +152,7 @@ td > div {
 
 .inputButtons {
     display: flex;
-    justify-content: c;
+    justify-content: center;
 }
 
 .display {

@@ -1,6 +1,6 @@
 let editMode = false;
-const startPoints = 501;
-let useConfirmation = true;
+let startPoints = 501;
+let useConfirmation = false;
 let inGame = false;
 
 
@@ -17,17 +17,21 @@ function start() {
         customAlert("No players registered");
         return;
     }
-    
-    let x2, x3;
+
+    customPrompt("Startpoints<br>(default 501)", function(val) {
+        if(!isNaN(val))
+            startPoints = parseInt(val);
+        for(i = 0; i < document.getElementsByClassName("playerShowList")[0].children.length; i++) {
+            let name = document.getElementsByClassName("playerShowList")[0].children[i].children[0].innerHTML;
+            document.getElementsByClassName("playersTurnList")[0].insertAdjacentHTML("beforeend", 
+            `<div name="${name}" score="${startPoints}" currentRoundScore="0" throws="0" average="0" round="0" class="playerModel">
+            <a class="playerName">${name}</a><a class="scoreRepresentation">${startPoints}</a></div>`);   
+        }
+    });
+
     document.getElementsByTagName("main")[0].setAttribute("style", "display: none;");
-    for(i = 0; i < document.getElementsByClassName("playerShowList")[0].children.length; i++) {
-        let name = document.getElementsByClassName("playerShowList")[0].children[i].children[0].innerHTML;
-        document.getElementsByClassName("playersTurnList")[0].insertAdjacentHTML("beforeend", 
-        `<div name="${name}" score="${startPoints}" currentRoundScore="0" throws="0" average="0" round="0" class="playerModel">
-        <a class="playerName">${name}</a><a class="scoreRepresentation">${startPoints}</a></div>`);   
-    }
     
-    
+    let x2, x3;    
     document.getElementsByTagName("main")[1].setAttribute("style", "display: flex;");
     console.log(document.querySelectorAll("td > div"));
     for(i = 0; i < document.querySelectorAll("td > div").length; i++) {
@@ -214,17 +218,19 @@ function addPlayer(username) {
 function customPrompt(caption, callback) {
     let div = document.createElement("div");
     div.classList.add("prompt");
+    let title = caption.includes("<br>") ? caption.split("<br>")[0]: caption.split(" ")[0];
+    let style = "style=\"margin: 10px\"";
     div.insertAdjacentHTML("afterbegin",    `<div><h1 class="caption">${caption}</h1><input spellcheck="false" name="username" type="text"><div class="row">
-                                            <a class="confirm button">Confirm</a><a class="cancel button">Cancel</a></div></div>`);
+                                            <a class="confirm${title} button" ${style}>Confirm</a><a class="cancel${title} button" ${style}>Cancel</a></div></div>`);
     document.body.appendChild(div);
-    document.getElementsByClassName("confirm")[0].addEventListener("click", function() {
+    document.getElementsByClassName(`confirm${title}`)[0].addEventListener("click", function() {
         let input = document.getElementsByName("username")[0].value;
         if(input.replace(" ", "") !== "") {
             callback(input);
             div.remove();
         }
     });
-    document.getElementsByClassName("cancel")[0].addEventListener("click", function() {
+    document.getElementsByClassName(`cancel${title}`)[0].addEventListener("click", function() {
         div.remove();
     });
 }
@@ -232,15 +238,17 @@ function customPrompt(caption, callback) {
 function customChoice(caption, callback) {
     let div = document.createElement("div");
     div.classList.add("prompt");
-    div.insertAdjacentHTML("afterbegin",    `<div><h1 class="caption">${caption}</h1><div class="row"><a class="confirm button">Confirm</a>
-                                            <a class="cancel button">Decline</a></div></div>`);
+    let style = "style=\"margin: 10px\"";
+    let title = caption.includes("<br>") ? caption.split("<br>")[0]: caption.split(" ")[0];
+    div.insertAdjacentHTML("afterbegin",    `<div><h1 class="caption">${caption}</h1><div class="row"><a class="confirm${title} button" ${style}>Confirm</a>
+                                            <a class="cancel${title} button" ${style}>Decline</a></div></div>`);
     document.body.appendChild(div);
-    document.getElementsByClassName("cancel")[0].addEventListener("click", function() {
+    document.getElementsByClassName(`cancel${title}`)[0].addEventListener("click", function() {
         div.remove();
         if(callback !== undefined)
             callback(false);
     });
-    document.getElementsByClassName("confirm")[0].addEventListener("click", function() {
+    document.getElementsByClassName(`confirm${title}`)[0].addEventListener("click", function() {
         div.remove();
         if(callback !== undefined)
             callback(true);
@@ -325,6 +333,5 @@ document.getElementsByClassName("removePlayer")[0].addEventListener("click", fun
 });
 
 document.getElementsByClassName("start")[0].addEventListener("click", start);
-
 
 document.getElementsByTagName("header")[0].children[0].addEventListener("click", stop);
