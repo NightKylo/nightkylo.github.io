@@ -15,7 +15,8 @@
                 //log("Searching...");
                 if(navigator.geolocation) {
                     navigator.geolocation.watchPosition(position => {
-                        log(position);
+                        log(`${position.timestamp}      ${position.coords.speed}`);
+                        console.log(position);
                     }, error => {
                         switch(error.code) {
                             case error.PERMISSION_DENIED:
@@ -36,7 +37,7 @@
                         timeout: 5000,
                         maximumAge: 0
                     });
-                } 
+                }
                 else {
                     log("Geolocation is not supported by this browser.");
                 }
