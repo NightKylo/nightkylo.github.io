@@ -4,17 +4,23 @@
         <title>Measurement</title>
     </head>
     <body>
-        <button style="width: 500px; height: 200px;" onclick="getLocation()"></button>
+        <button style="width: 500px; height: 200px;" onclick="startLoading()"></button>
         <div id="log"></div>
         <script>
             function log(obj) {
                 document.getElementById("log").insertAdjacentHTML("beforeend", `<span>${obj}</span><br>`);
             }
 
+            function startLoading() {
+                while (true) {
+                    getLocation();
+                }
+            }
+
             function getLocation() {
-                log("Searching...");
+                //log("Searching...");
                 if(navigator.geolocation) {
-                    navigator.geolocation.watchPosition(position => {
+                    navigator.geolocation.getCurrentPosition(position => {
                         log(position);
                     }, error => {
                         switch(error.code) {
