@@ -4,6 +4,19 @@
         <title>Measurement</title>
     </head>
     <body>
-        <script src="gps.js"></script>
+        <button style="width: 500px; height: 200px;" onclick="getLocation()"></button>
+        <script>
+            function getLocation() {
+                console.log("Searching...");
+                if(navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        console.log(position);
+                    });
+                } 
+                else {
+                    console.error("Geolocation is not supported by this browser.");
+                }
+            }
+        </script>
     </body>
 </html>

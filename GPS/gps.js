@@ -1,7 +1,3 @@
-function main() {
-    console.log("Test");
-}
-
 function getLocation() {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
