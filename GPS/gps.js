@@ -5,7 +5,7 @@ function main() {
 function getLocation() {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-            console.log(position.speed);
+            console.log(position);
         });
     } 
     else {
@@ -14,4 +14,5 @@ function getLocation() {
 }
 
 
+console.log("init");
 getLocation();
