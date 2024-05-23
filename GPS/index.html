@@ -11,16 +11,10 @@
                 document.getElementById("log").insertAdjacentHTML("beforeend", `<span>${obj}</span><br>`);
             }
 
-            function startLoading() {
-                while (true) {
-                    getLocation();
-                }
-            }
-
             function getLocation() {
                 //log("Searching...");
                 if(navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
+                    navigator.geolocation.watchPosition(position => {
                         log(position);
                     }, error => {
                         switch(error.code) {
