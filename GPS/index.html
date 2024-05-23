@@ -5,25 +5,30 @@
     </head>
     <body>
         <button style="width: 500px; height: 200px;" onclick="getLocation()"></button>
+        <div id="log"></div>
         <script>
+            function log(obj) {
+                document.getElementById("log").insertAdjacentHTML("beforeend", `<span>${obj}</span><br>`);
+            }
+
             function getLocation() {
-                console.log("Searching...");
+                log("Searching...");
                 if(navigator.geolocation) {
                     navigator.geolocation.watchPosition(position => {
-                        console.log(position);
+                        log(position);
                     }, error => {
                         switch(error.code) {
                             case error.PERMISSION_DENIED:
-                                console.log("User denied the request for Geolocation.");
+                                log("User denied the request for Geolocation.");
                                 break;
                             case error.POSITION_UNAVAILABLE:
-                                console.log("Location information is unavailable.");
+                                log("Location information is unavailable.");
                                 break;
                             case error.TIMEOUT:
-                                console.log("The request to get user location timed out.");
+                                log("The request to get user location timed out.");
                                 break;
                             case error.UNKNOWN_ERROR:
-                                console.log("An unknown error occurred.");
+                                log("An unknown error occurred.");
                                 break;
                         }
                     }, {
@@ -33,7 +38,7 @@
                     });
                 } 
                 else {
-                    console.error("Geolocation is not supported by this browser.");
+                    log("Geolocation is not supported by this browser.");
                 }
             }
         </script>
