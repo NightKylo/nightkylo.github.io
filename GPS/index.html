@@ -9,7 +9,7 @@
             function getLocation() {
                 console.log("Searching...");
                 if(navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
+                    navigator.geolocation.watchPosition(position => {
                         console.log(position);
                     }, error => {
                         switch(error.code) {
@@ -26,6 +26,10 @@
                                 console.log("An unknown error occurred.");
                                 break;
                         }
+                    }, {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
                     });
                 } 
                 else {
